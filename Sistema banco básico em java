@@ -1,0 +1,93 @@
+arquivo: Main.java
+
+package sample;
+import java.util.Scanner;
+import java.lang.String;
+import sample.Conta;
+
+public class Main{
+
+    public static void main(String[]args) {
+        Scanner sc = new Scanner(System.in);
+
+        Conta dep = new Conta();
+        double valor = 0;
+        System.out.print("Digite seu nome: ");
+        String nome = sc.nextLine();
+        System.out.print("Digite numero da conta: ");
+        int numero = sc.nextInt();
+
+        Conta p = new Conta(numero,nome);
+
+        System.out.print("deseja realizar deposito inicial(S/N): ");
+        char resp = sc.next().charAt(0);
+
+        if (resp != 'N'){
+            System.out.print("Insira valor: ");
+            double a = sc.nextDouble();
+            valor = a;
+        }else{
+            valor = 0;
+        }
+
+        dep.setDeposito(valor);
+
+        System.out.println("Dados atuais: ");
+        System.out.print(p.gettela() +" ");
+        System.out.print(dep.toString());
+        System.out.println();
+        System.out.print("Insira para depositar: ");
+        double dep1 = sc.nextDouble();
+        dep.getdep(dep1);
+        System.out.println();
+        System.out.println("Dados atualizados: ");
+        System.out.print(p.gettela() +" ");
+        System.out.print(dep.toString());
+        System.out.println();
+        System.out.print("Insira valor para saque: ");
+        double saque = sc.nextDouble();
+        dep.getsaque(saque);
+        System.out.println();
+        System.out.println("Dados apos saque: ");
+        System.out.print(p.gettela() +" ");
+        System.out.print(dep.toString());
+        }
+    }
+------------------------------------------------------------------------------------------------------------------------------------------
+class Conta.java
+
+package sample;
+
+public class Conta {
+    private int conta;
+    private String nome;
+    private double deposito;
+
+    public Conta(){
+    }
+
+    public Conta(int numero,String nome) {
+        this.conta = numero;
+        this.nome = nome;
+    }
+
+    public void setDeposito(double valor){
+        this.deposito = valor;
+    }
+
+    public void getdep(double deposito){
+        this.deposito += deposito;
+    }
+    public void getsaque(double saque){
+        this.deposito = deposito - 5;
+        this.deposito -= saque;
+    }
+    public String gettela(){
+        return "nome: "+nome+"," + String.format("  Numero da Conta: %d ",conta) ;
+    }
+    public String toString(){
+        return "" +String.format("Saldo da conta atual: %.2f" ,deposito );
+    }
+
+}
+
