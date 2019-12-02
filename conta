@@ -1,0 +1,77 @@
+package codigo5;
+
+public class conta {
+    private String nome;
+    private Integer num;
+    private double saldo = 0;
+    private double limit_saque = 300;
+
+    public conta() {
+    }
+
+    public conta(String nome, Integer num, double saldo) {
+        this.nome = nome;
+        this.num = num;
+        this.saldo = saldo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getLimit_saldo() {
+        return limit_saque;
+    }
+    public void deposito(double deposito){
+        this.saldo += deposito;
+    }
+    public String saida(){
+        StringBuilder a = new StringBuilder();
+        a.append("\ndados ate o momento: ");
+        a.append("\nnome: " + getNome());
+        a.append("\nnumero conta: " + String.format("" + getNum()));
+        a.append("\nvalor em conta apos deposito: " + String.format(" %.2f",getSaldo()));
+        return a.toString();
+    }
+    public void  saque_saldo(double saque)throws codigo_exceçao{
+        if(this.saldo < saque){
+            throw new codigo_exceçao("nao foi possivel realizar saque, pois saldo em conta deve ser maior que saque! ");
+        }
+        if(this.limit_saque < saque ){
+            throw new codigo_exceçao("limite de saque excedido! ");
+        }
+
+        this.saldo -= saque;
+        }
+        public String saida_att(){
+        StringBuilder b = new StringBuilder();
+        b.append("\ndados finais: ");
+        b.append("\nnome: " + getNome());
+        b.append("\nnumero conta: " + String.format("" + getNum()));
+        b.append("\ndados apos saque: "+ String.format(" %.2f",getSaldo()));
+        return b.toString();
+    }
+
+
+
+}
