@@ -1,0 +1,64 @@
+package codigo5;
+
+import java.util.Scanner;
+
+public class main5  {
+
+    public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+
+
+    System.out.println("|--------------------------------------|");
+    System.out.println("|############## Banco #################|");
+    System.out.println("|--------------------------------------|");
+
+    System.out.println("Insira dados abaixo: ");
+
+    try {
+            System.out.print("Digite seu nome: ");
+            String nome = sc.next();
+            System.out.print("Digite numero da conta: ");
+            Integer num = sc.nextInt();
+
+            System.out.print("deseja realizar deposito(S/N): ");
+            char dep = sc.next().charAt(0);
+
+            conta c;
+
+            if (dep == 'S') {
+                System.out.print("Insira valor: ");
+                double depo = sc.nextDouble();
+                c = new conta(nome, num, depo);
+            } else {
+                c = new conta(nome, num, 0);
+            }
+            System.out.println();
+
+            System.out.println(c.saida());
+
+            System.out.print("deseja realizar saque(S/N): ");
+            char checar = sc.next().charAt(0);
+
+            if (checar == 'S') {
+                System.out.print("Insira valor para saque: ");
+                double saque1 = sc.nextDouble();
+                c.saque_saldo(saque1);
+            } else {
+                c.saque_saldo(0);
+            }
+            System.out.println();
+
+            System.out.println(c.saida_att());
+
+            System.out.println(" -------fim do programa----------- ");
+    }
+    catch (codigo_exceçao e){
+        System.out.print("\n erro 1: " + e.getMessage());
+    }
+
+
+    }
+
+
+
+    }
