@@ -1,0 +1,9 @@
+package codigo5;
+
+public class codigo_exceçao extends Exception {
+
+
+    public codigo_exceçao(String msg) {
+        super(msg);
+    }
+}
