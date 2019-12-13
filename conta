@@ -1,10 +1,10 @@
 package codigo5;
 
-public class conta {
+public class Conta {
     private String nome;
     private Integer num;
     private double saldo = 0;
-    private double limit_saque = 300;
+    private double limit_Saque = 300;
 
     public conta() {
     }
@@ -53,17 +53,17 @@ public class conta {
         a.append("\nvalor em conta apos deposito: " + String.format(" %.2f",getSaldo()));
         return a.toString();
     }
-    public void  saque_saldo(double saque)throws codigo_exceçao{
+    public void  saque_Saldo(double saque)throws codigo_exceçao{
         if(this.saldo < saque){
             throw new codigo_exceçao("nao foi possivel realizar saque, pois saldo em conta deve ser maior que saque! ");
         }
-        if(this.limit_saque < saque ){
+        if(this.limit_Saque < saque ){
             throw new codigo_exceçao("limite de saque excedido! ");
         }
 
         this.saldo -= saque;
         }
-        public String saida_att(){
+        public String saida_Att(){
         StringBuilder b = new StringBuilder();
         b.append("\ndados finais: ");
         b.append("\nnome: " + getNome());
