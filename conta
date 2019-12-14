@@ -45,7 +45,7 @@ public class Conta {
     public void deposito(double deposito){
         this.saldo += deposito;
     }
-    public String saida(){
+    public String Saida(){
         StringBuilder a = new StringBuilder();
         a.append("\ndados ate o momento: ");
         a.append("\nnome: " + getNome());
